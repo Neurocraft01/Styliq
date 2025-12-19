@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div>
             <div className="flex items-center space-x-3 mb-8">
-              <img src="/logo.jpg" alt="Styliq Interiors" className="h-12 w-auto rounded-sm" />
+              <img src="/logo.jpg" alt="Styliq Interiors" className="h-12 w-12 object-cover rounded-md" />
               <div className="flex flex-col">
                 <span className="text-2xl font-serif font-bold text-white tracking-widest leading-none">STYLIQ</span>
                 <span className="text-brand text-xs tracking-[0.3em] leading-none mt-1">INTERIORS</span>
@@ -80,9 +80,9 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Your Email Address" 
-                className="w-full bg-dark border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors"
+                className="w-full bg-dark border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors rounded-md"
               />
-              <button type="submit" className="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 px-6 transition-colors flex items-center justify-center group">
+              <button type="submit" className="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 px-6 transition-colors flex items-center justify-center group rounded-md">
                 Subscribe <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
               </button>
             </form>

@@ -56,7 +56,7 @@ const Services = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-dark z-10" />
           <img 
-            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
             alt="Services Hero" 
             className="w-full h-full object-cover"
           />
@@ -85,7 +85,7 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-24 relative">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -93,7 +93,7 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group bg-dark-lighter p-10 border border-white/5 hover:border-brand/30 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/5 relative overflow-hidden"
+                className="group bg-dark-lighter p-6 border border-white/5 hover:border-brand/30 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/5 relative overflow-hidden rounded-lg"
               >
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                   <service.icon size={120} className="text-brand" />
@@ -144,7 +144,7 @@ const Services = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.2 }}
-                  className="bg-dark p-8 border border-white/5 text-center group hover:-translate-y-2 transition-transform duration-500"
+                  className="bg-dark p-8 border border-white/5 text-center group hover:-translate-y-2 transition-transform duration-500 rounded-lg"
                 >
                   <div className="w-16 h-16 bg-dark border-2 border-brand text-brand font-bold text-2xl rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-brand group-hover:text-white transition-all duration-500 relative z-10">
                     {item.step}
@@ -178,7 +178,7 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-dark-lighter p-8 border border-white/5 hover:border-brand/30 transition-colors"
+                className="bg-dark-lighter p-8 border border-white/5 hover:border-brand/30 transition-colors rounded-lg"
               >
                 <h4 className="font-bold text-xl text-white mb-3 flex items-start">
                   <span className="text-brand mr-3 text-2xl leading-none">•</span>
@@ -195,7 +195,7 @@ const Services = () => {
       <section className="py-20 bg-brand text-white text-center">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-8">Have a project in mind?</h2>
-          <button className="bg-white text-brand px-10 py-4 font-bold uppercase tracking-widest hover:bg-dark hover:text-white transition-colors inline-flex items-center group">
+          <button className="bg-white text-brand px-10 py-4 font-bold uppercase tracking-widest hover:bg-dark hover:text-white transition-colors inline-flex items-center group rounded-md">
             Get a Quote <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

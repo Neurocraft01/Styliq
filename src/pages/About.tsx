@@ -1,6 +1,30 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion';
 import { Award, Users, Clock, CheckCircle, ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+
+const Counter = ({ value }: { value: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const numericValue = parseInt(value.replace(/\D/g, ''));
+  const suffix = value.replace(/[0-9]/g, '');
+
+  useEffect(() => {
+    if (!inView) return;
+    
+    const node = ref.current;
+    const controls = animate(0, numericValue, {
+      duration: 2.5,
+      ease: "easeOut",
+      onUpdate(val) {
+        if (node) node.textContent = Math.floor(val) + suffix;
+      }
+    });
+
+    return () => controls.stop();
+  }, [numericValue, suffix, inView]);
+
+  return <span ref={ref}>{0 + suffix}</span>;
+};
 
 const About = () => {
   const containerRef = useRef(null);
@@ -13,8 +37,8 @@ const About = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const stats = [
-    { number: "10+", label: "Years Experience", icon: Clock },
-    { number: "250+", label: "Projects Completed", icon: CheckCircle },
+    { number: "15+", label: "Years Experience", icon: Clock },
+    { number: "350+", label: "Projects Completed", icon: CheckCircle },
     { number: "15+", label: "Design Awards", icon: Award },
     { number: "100%", label: "Client Satisfaction", icon: Users }
   ];
@@ -158,7 +182,9 @@ const About = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-6 group-hover:bg-brand/20 transition-colors duration-300">
                   <stat.icon className="text-brand w-8 h-8" />
                 </div>
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</h3>
+                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  <Counter value={stat.number} />
+                </h3>
                 <p className="text-gray-400 uppercase tracking-wider text-sm">{stat.label}</p>
               </motion.div>
             ))}
@@ -194,7 +220,7 @@ const About = () => {
                   
                   {/* Social Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 bg-black/40 backdrop-blur-sm">
-                    <button className="bg-white text-dark px-6 py-3 font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors">
+                    <button className="bg-white text-dark px-6 py-3 font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors rounded-md">
                       View Profile
                     </button>
                   </div>
@@ -223,7 +249,7 @@ const About = () => {
               <p className="text-gray-600 text-lg max-w-md mb-8">
                 Let's collaborate to create a space that tells your story. Schedule a consultation with our design team today.
               </p>
-              <button className="bg-dark text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-brand transition-colors flex items-center group">
+              <button className="bg-dark text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-brand transition-colors flex items-center group rounded-md">
                 Start Your Project <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

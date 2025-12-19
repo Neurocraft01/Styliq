@@ -112,7 +112,7 @@ const Contact = () => {
             </div>
 
             {/* Map Integration */}
-            <div className="h-80 w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-sm overflow-hidden border border-white/10">
+            <div className="h-80 w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-lg overflow-hidden border border-white/10">
                <iframe 
                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1623345678901!5m2!1sen!2sus" 
                  width="100%" 
@@ -131,7 +131,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-dark-lighter p-10 border border-white/5 relative overflow-hidden"
+            className="bg-dark-lighter p-10 border border-white/5 relative overflow-hidden rounded-lg"
           >
             <div className="absolute top-0 right-0 w-20 h-20 bg-brand/10 rounded-bl-full -mr-10 -mt-10"></div>
             
@@ -184,7 +184,7 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-brand text-white font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-colors flex items-center justify-center group">
+              <button type="submit" className="w-full bg-brand text-white font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-colors flex items-center justify-center group rounded-md">
                 Send Message <Send className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
               </button>
             </form>

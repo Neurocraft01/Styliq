@@ -30,11 +30,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-dark/90 backdrop-blur-md py-4 shadow-2xl border-b border-white/5' : 'bg-transparent py-8'}`}>
+    <nav className={`sticky top-0 w-full z-50 transition-all duration-500 bg-dark border-b border-white/5 py-4`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-4 group">
           <div className="relative overflow-hidden rounded-lg">
-            <img src="/logo.jpg" alt="Styliq Interiors" className="h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-110" />
+            <img src="/logo.jpg" alt="Styliq Interiors" className="h-20 w-20 object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
           <div className="flex flex-col">
             <span className="text-3xl font-serif font-bold text-white tracking-widest leading-none group-hover:text-brand transition-colors duration-300">STYLIQ</span>
@@ -54,8 +54,8 @@ const Navbar = () => {
               <span className={`absolute -bottom-2 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
             </Link>
           ))}
-          <Link to="/contact" className="bg-gradient-to-r from-brand to-brand-light hover:from-brand-dark hover:to-brand text-white font-bold py-3 px-8 rounded-none skew-x-[-10deg] transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,92,13,0.5)]">
-            <span className="block skew-x-[10deg]">Book Meeting</span>
+          <Link to="/contact" className="bg-gradient-to-r from-brand to-brand-light hover:from-brand-dark hover:to-brand text-white font-bold py-3 px-8 rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,92,13,0.5)]">
+            <span className="block">Book Meeting</span>
           </Link>
         </div>
 

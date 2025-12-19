@@ -39,14 +39,14 @@ const Home = () => {
               We craft immersive environments that blend modern aesthetics with timeless elegance. Your space, reimagined.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              <Link to="/projects" className="group relative px-10 py-4 bg-brand text-white font-bold text-lg overflow-hidden skew-x-[-10deg] hover:shadow-[0_0_30px_rgba(232,92,13,0.6)] transition-all duration-300">
+              <Link to="/projects" className="group relative px-10 py-4 bg-brand text-white font-bold text-lg overflow-hidden rounded-md hover:shadow-[0_0_30px_rgba(232,92,13,0.6)] transition-all duration-300">
                 <span className="absolute inset-0 w-full h-full bg-brand-dark -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-                <span className="relative flex items-center skew-x-[10deg]">
+                <span className="relative flex items-center">
                   View Portfolio <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" size={24} />
                 </span>
               </Link>
-              <Link to="/contact" className="group px-10 py-4 border border-white/30 text-white font-bold text-lg hover:bg-white hover:text-dark transition-all duration-300 skew-x-[-10deg]">
-                <span className="block skew-x-[10deg]">Book Consultation</span>
+              <Link to="/contact" className="group px-10 py-4 border border-white/30 text-white font-bold text-lg hover:bg-white hover:text-dark transition-all duration-300 rounded-md">
+                <span className="block">Book Consultation</span>
               </Link>
             </div>
           </motion.div>
@@ -70,7 +70,7 @@ const Home = () => {
             <div className="lg:w-1/2 relative">
               <div className="absolute -top-10 -left-10 w-full h-full border-2 border-brand/20 rounded-lg z-0 hidden md:block"></div>
               <img 
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=1000&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop" 
                 alt="About Styliq" 
                 className="rounded-lg shadow-2xl relative z-10 w-full grayscale hover:grayscale-0 transition-all duration-700"
               />
@@ -116,7 +116,7 @@ const Home = () => {
               { title: "Commercial Spaces", desc: "Inspiring workplaces for modern businesses.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" },
               { title: "Architectural Planning", desc: "Structural precision meets aesthetic beauty.", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" }
             ].map((item, idx) => (
-              <div key={idx} className="group relative h-[500px] overflow-hidden rounded-lg cursor-pointer">
+              <div key={idx} className="group relative h-[350px] overflow-hidden rounded-lg cursor-pointer">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                 <div className="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">

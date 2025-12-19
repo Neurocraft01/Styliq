@@ -11,7 +11,7 @@ import { ZoomIn } from 'lucide-react';
 const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Office', 'Details'];
 
 const galleryImages = [
-  { id: 1, category: 'Living Room', src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=1200&auto=format&fit=crop' },
+  { id: 1, category: 'Living Room', src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop' },
   { id: 2, category: 'Office', src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop' },
   { id: 3, category: 'Details', src: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop' },
   { id: 4, category: 'Bedroom', src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop' },

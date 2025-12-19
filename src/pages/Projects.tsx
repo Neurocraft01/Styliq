@@ -113,7 +113,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-8 py-3 text-sm font-bold uppercase tracking-widest transition-all border ${
+              className={`px-8 py-3 text-sm font-bold uppercase tracking-widest transition-all border rounded-md ${
                 activeCategory === cat 
                   ? 'bg-brand text-white border-brand' 
                   : 'bg-transparent text-gray-400 border-white/10 hover:border-brand hover:text-white'
@@ -137,7 +137,7 @@ const Projects = () => {
                 key={project.id}
                 className="group cursor-pointer"
               >
-                <div className="relative overflow-hidden mb-6 aspect-[4/3]">
+                <div className="relative overflow-hidden mb-6 aspect-video rounded-lg">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500 z-10"></div>
                   <img 
                     src={project.image} 
@@ -147,7 +147,7 @@ const Projects = () => {
                   
                   {/* Overlay on Hover */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-20">
-                    <button className="border border-white text-white px-8 py-3 uppercase tracking-widest hover:bg-white hover:text-dark transition-colors">
+                    <button className="border border-white text-white px-8 py-3 uppercase tracking-widest hover:bg-white hover:text-dark transition-colors rounded-md">
                       View Project
                     </button>
                   </div>
@@ -169,7 +169,7 @@ const Projects = () => {
         </motion.div>
         
         <div className="mt-20 text-center">
-          <button className="bg-transparent border border-white/20 text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-colors inline-flex items-center group">
+          <button className="bg-transparent border border-white/20 text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-colors inline-flex items-center group rounded-md">
             Load More Projects <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
