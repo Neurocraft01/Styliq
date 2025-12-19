@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MessageCircle, Phone, MessageSquare, X, Send } from 'lucide-react';
+import { MessageCircle, Phone, MessageSquare, X, Send, Instagram, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FloatingButtons = () => {
@@ -89,6 +89,30 @@ const FloatingButtons = () => {
 
       {/* Floating Action Buttons */}
       <div className="fixed bottom-8 right-8 flex flex-col space-y-4 z-40">
+        {/* Google Maps Button */}
+        <motion.a
+          href="https://www.google.com/maps/search/?api=1&query=Styliq+Interiors"
+          target="_blank"
+          rel="noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="bg-blue-500 text-white p-4 shadow-lg hover:shadow-blue-500/20 transition-shadow flex items-center justify-center group rounded-full"
+        >
+          <MapPin size={24} className="group-hover:rotate-12 transition-transform" />
+        </motion.a>
+
+        {/* Instagram Button */}
+        <motion.a
+          href="https://instagram.com/styliqinteriors/"
+          target="_blank"
+          rel="noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white p-4 shadow-lg hover:shadow-[#dc2743]/20 transition-shadow flex items-center justify-center group rounded-full"
+        >
+          <Instagram size={24} className="group-hover:rotate-12 transition-transform" />
+        </motion.a>
+
         {/* WhatsApp Button */}
         <motion.a
           href={`https://wa.me/${whatsappNumber}`}

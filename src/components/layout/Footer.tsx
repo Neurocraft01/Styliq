@@ -19,7 +19,7 @@ const Footer = () => {
               Creating timeless, elegant, and functional spaces that reflect your unique style and personality. We design for life.
             </p>
             <div className="flex space-x-6">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-brand transition-colors transform hover:scale-110">
+              <a href="https://instagram.com/styliqinteriors/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-brand transition-colors transform hover:scale-110">
                 <Instagram size={24} />
               </a>
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-brand transition-colors transform hover:scale-110">

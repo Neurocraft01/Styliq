@@ -11,7 +11,7 @@ const projects = [
     category: 'Residential',
     location: 'Malibu, CA',
     year: '2023',
-    image: 'https://images.unsplash.com/photo-1600596542815-2495db98dada?q=80&w=1200&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop'
   },
   {
     id: 2,
