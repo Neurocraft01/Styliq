@@ -35,7 +35,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold text-white mb-8 uppercase tracking-widest border-b border-brand/30 pb-2 inline-block">Explore</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Projects', 'Gallery', 'Contact'].map((item) => (
+              {['Home', 'About Us', 'Services', 'Themes', 'Gallery', 'Contact'].map((item) => (
                 <li key={item}>
                   <Link to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-brand transition-all flex items-center group">
                     <span className="w-0 group-hover:w-2 h-[1px] bg-brand mr-0 group-hover:mr-2 transition-all duration-300"></span>
@@ -52,15 +52,15 @@ const Footer = () => {
             <ul className="space-y-6">
               <li className="flex items-start space-x-4 text-gray-400 group">
                 <MapPin className="text-brand shrink-0 mt-1 group-hover:text-white transition-colors" size={20} />
-                <span className="group-hover:text-white transition-colors">123 Design Avenue, Creative District, City, Country</span>
+                <span className="group-hover:text-white transition-colors">Near Laxmi Sweets, Yashwantrao Chavan Road, Pimpri Colony, Pune - 411018</span>
               </li>
               <li className="flex items-center space-x-4 text-gray-400 group">
                 <Phone className="text-brand shrink-0 group-hover:text-white transition-colors" size={20} />
-                <span className="group-hover:text-white transition-colors">+1 234 567 8900</span>
+                <span className="group-hover:text-white transition-colors">7447415182 / 8805500590</span>
               </li>
               <li className="flex items-center space-x-4 text-gray-400 group">
                 <Mail className="text-brand shrink-0 group-hover:text-white transition-colors" size={20} />
-                <span className="group-hover:text-white transition-colors">hello@styliqinteriors.com</span>
+                <span className="group-hover:text-white transition-colors">Styliqinteriors@gmail.com</span>
               </li>
               <li className="flex items-start space-x-4 text-gray-400 group">
                 <Clock className="text-brand shrink-0 mt-1 group-hover:text-white transition-colors" size={20} />

@@ -71,8 +71,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg mb-1">Phone</h4>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">+1 234 567 8900</p>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">+1 987 654 3210</p>
+                    <p className="text-gray-400 group-hover:text-brand transition-colors">7447415182</p>
+                    <p className="text-gray-400 group-hover:text-brand transition-colors">8805500590</p>
                   </div>
                 </div>
                 
@@ -82,8 +82,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg mb-1">Email</h4>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">hello@styliqinteriors.com</p>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">support@styliqinteriors.com</p>
+                    <p className="text-gray-400 group-hover:text-brand transition-colors">Styliqinteriors@gmail.com</p>
                   </div>
                 </div>
 
@@ -93,8 +92,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg mb-1">Visit Us</h4>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">123 Design Avenue, Creative District</p>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">City, Country, 12345</p>
+                    <p className="text-gray-400 group-hover:text-brand transition-colors">Near Laxmi Sweets, Yashwantrao Chavan Road</p>
+                    <p className="text-gray-400 group-hover:text-brand transition-colors">Pimpri Colony, Pune - 411018</p>
                   </div>
                 </div>
 

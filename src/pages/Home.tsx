@@ -33,16 +33,16 @@ const Home = () => {
           >
             <h2 className="text-brand text-lg md:text-xl tracking-[0.5em] uppercase mb-6 font-medium">Welcome to Styliq</h2>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-8 text-white leading-tight">
-              Design That <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand via-brand-light to-brand">Inspires</span>
+              Elevate Your Living Experience.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              We craft immersive environments that blend modern aesthetics with timeless elegance. Your space, reimagined.
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+              At STYLIQ Interiors, we believe your home should be a reflection of your journey. We blend aesthetic innovation with functional excellence to bring your vision to life.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              <Link to="/projects" className="group relative px-10 py-4 bg-brand text-white font-bold text-lg overflow-hidden rounded-md hover:shadow-[0_0_30px_rgba(232,92,13,0.6)] transition-all duration-300">
+              <Link to="/themes" className="group relative px-10 py-4 bg-brand text-white font-bold text-lg overflow-hidden rounded-md hover:shadow-[0_0_30px_rgba(232,92,13,0.6)] transition-all duration-300">
                 <span className="absolute inset-0 w-full h-full bg-brand-dark -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                 <span className="relative flex items-center">
-                  View Portfolio <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" size={24} />
+                  Explore Themes <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" size={24} />
                 </span>
               </Link>
               <Link to="/contact" className="group px-10 py-4 border border-white/30 text-white font-bold text-lg hover:bg-white hover:text-dark transition-all duration-300 rounded-md">
@@ -142,8 +142,8 @@ const Home = () => {
       <section className="py-32 bg-dark">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Why Choose <span className="text-brand">Styliq</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">We go beyond design to deliver an experience that is seamless, transparent, and transformative.</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Why Choose <span className="text-brand">STYLIQ Interiors</span>?</h2>
+            <p className="text-gray-400 max-w-4xl mx-auto text-lg">At STYLIQ Interiors, we have redefined the design journey by becoming the region’s first theme-based interior studio. Rather than being overwhelmed by fragmented choices, our clients select from curated design themes—ranging from Modern Designs to Bold Industrial or Timeless Classic. Once a theme is chosen, our team applies rigorous precision to execute that vision across every square inch of your home, ensuring that every fabric, finish, and fixture speaks the same visual language.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

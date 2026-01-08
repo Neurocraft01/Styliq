@@ -15,35 +15,36 @@ const Services = () => {
   const services = [
     {
       icon: Home,
-      title: 'Residential Design',
-      description: 'From urban apartments to sprawling estates, we create homes that are a true reflection of those who dwell within them.',
-      features: ['Space Planning', 'Concept Development', 'Material Selection', 'Custom Furniture']
+      title: 'Full Home Residential Interiors',
+      description: 'Turnkey solutions for homeowners. From luxury apartments to private villas, we manage everything from conceptualization to the final styling of your living spaces.',
+      features: ['Concept to Styling', 'Material Selection', 'Theme Alignment', 'On-site Execution']
     },
     {
       icon: Building2,
-      title: 'Commercial Design',
-      description: 'We design workplaces, retail spaces, and hospitality environments that embody your brand and enhance user experience.',
-      features: ['Office Layouts', 'Retail Interiors', 'Brand Integration', 'Lighting Design']
+      title: 'Full Commercial Interiors',
+      description: 'Results-driven design for offices, retail outlets, and hospitality spaces. We focus on brand identity, employee productivity, and customer experience.',
+      features: ['Office Layouts', 'Retail & Hospitality', 'Brand Integration', 'Lighting Design']
     },
     {
       icon: Palette,
-      title: 'Interior Styling',
-      description: 'The finishing touches that make a house a home. We curate art, accessories, and textiles to elevate your space.',
-      features: ['Art Curation', 'Accessory Styling', 'Color Consultation', 'Textile Selection']
+      title: 'Design Consultancy',
+      description: 'Expert advice for clients who need professional direction. We provide layout optimization, material selection, and aesthetic guidance to bring your vision to life.',
+      features: ['Layout Optimization', 'Material Selection', 'Aesthetic Guidance', 'Theme Roadmapping']
     },
     {
       icon: Ruler,
-      title: 'Renovation Management',
-      description: 'We oversee the entire renovation process, coordinating with contractors and vendors to ensure a seamless execution.',
-      features: ['Project Management', 'Contractor Coordination', 'Budget Management', 'Quality Control']
+      title: 'Realistic 3D Renders & Designs',
+      description: 'Visualize your space before a single brick is laid. Our high-fidelity 3D renderings let you experience textures, lighting, and scale with photographic realism.',
+      features: ['High-fidelity Renders', 'Lighting Simulation', 'Photographic Realism', 'Scale Accuracy']
     }
   ];
 
   const process = [
-    { step: "01", title: "Discovery", desc: "We begin by understanding your vision, lifestyle, and functional needs through in-depth consultation." },
-    { step: "02", title: "Concept", desc: "We develop initial design concepts, mood boards, and spatial layouts to visualize the direction." },
-    { step: "03", title: "Development", desc: "Refining the design with detailed drawings, material selections, and 3D visualizations." },
-    { step: "04", title: "Execution", desc: "We manage the implementation, from procurement to installation, ensuring every detail is perfect." }
+    { step: "01", title: "Site Measurement & Rapid Quotation", desc: "Precise technical measurements of your site followed by a comprehensive quotation within 2–3 days—clear, honest pricing with no surprises." },
+    { step: "02", title: "Drafting & 3D Visualization", desc: "Detailed architectural drafts and realistic 3D designs so you can virtually walk through your future space and refine with confidence." },
+    { step: "03", title: "Site Analysis Report (SAR)", desc: "Once designs are finalized, we generate a standardized SAR—your master technical guide that ensures design intent matches execution on site." },
+    { step: "04", title: "Certified Execution & Transparency", desc: "We work with certified vendors, maintain full transparency on budgets and milestones, and supervise quality at every stage." },
+    { step: "05", title: "Structured Payment Schedule", desc: "Milestone-based payments aligned to project phases to ensure financial clarity and steady progress." }
   ];
 
   return (
