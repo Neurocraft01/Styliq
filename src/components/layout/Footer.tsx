@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div>
             <div className="flex items-center space-x-3 mb-8">
-              <img src="/logo.jpg" alt="Styliq Interiors" className="h-12 w-12 object-cover rounded-md" />
+              <img src="/logo.PNG" alt="Styliq Interiors" className="h-12 w-12 object-cover rounded-md" />
               <div className="flex flex-col">
                 <span className="text-2xl font-serif font-bold text-white tracking-widest leading-none">STYLIQ</span>
                 <span className="text-brand text-xs tracking-[0.3em] leading-none mt-1">INTERIORS</span>

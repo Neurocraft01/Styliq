@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-4 group">
           <div className="relative overflow-hidden rounded-lg">
-            <img src="/logo.jpg" alt="Styliq Interiors" className="h-20 w-20 object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img src="/logo.PNG" alt="Styliq Interiors" className="h-20 w-20 object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
           <div className="flex flex-col">
             <span className="text-3xl font-serif font-bold text-white tracking-widest leading-none group-hover:text-brand transition-colors duration-300">STYLIQ</span>

@@ -1,46 +1,67 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 
 const categories = ['All', 'Modern Interior', 'Classic Interior', 'Neo-Classic Interior', 'Bohemian (Boho) Interior'];
 
-const themes = [
+const themesData = [
   {
     id: 1,
     title: 'Modern Interior',
+    subtitle: 'The Art of Simplicity and Function',
     category: 'Modern Interior',
-    location: 'The Vibe: Sophisticated, calm, functional',
-    year: 'Key: Open plans · Neutrals · Natural materials',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop'
+    tagline: 'The Vibe: Sophisticated, calm, functional',
+    summary: 'Key: Open plans · Neutrals · Natural materials',
+    description: 'Modern design is rooted in the "less is more" philosophy. It focuses on clean lines, geometric shapes, and a clutter-free environment. This theme is perfect for those who appreciate an organized, sleek, and airy living space.',
+    keyFeatures: ['Open floor plans', 'Neutral color palettes', 'Natural materials like wood, glass, and metal'],
+    vibe: 'Sophisticated, calm, and effortlessly functional',
+    image: '/moderntheme1.jpeg',
+    galleryImages: ['/moderntheme1.jpeg', '/moderntheme2.jpeg', '/moderntheme3.jpeg']
   },
   {
     id: 2,
     title: 'Classic Interior',
+    subtitle: 'Timeless Elegance and Grandeur',
     category: 'Classic Interior',
-    location: 'The Vibe: Warm, luxurious, refined',
-    year: 'Key: Symmetry · Rich details · Dark woods',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop'
+    tagline: 'The Vibe: Warm, luxurious, refined',
+    summary: 'Key: Symmetry · Rich details · Dark woods',
+    description: 'Classic interior design is inspired by 18th and 19th-century European styles. It is a structured and noble aesthetic that prioritizes symmetry, balance, and rich details. This theme is ideal for clients who want a home that feels prestigious and enduring.',
+    keyFeatures: ['Intricate moldings', 'Dark wood furniture', 'Rich fabrics like velvet or silk', 'Central focal point (like a fireplace or chandelier)'],
+    vibe: 'Warm, luxurious, and refined',
+    image: '/classicaltheme1.jpeg',
+    galleryImages: ['/classicaltheme1.jpeg', '/classicaltheme2.jpeg', '/classicaltheme3.jpeg', '/classicaltheme4.jpeg']
   },
   {
     id: 3,
     title: 'Neo-Classic Interior',
+    subtitle: 'The Perfect Blend of Heritage and Modernity',
     category: 'Neo-Classic Interior',
-    location: 'The Vibe: Stately yet breathable',
-    year: 'Key: Soft palettes · Modern finishes',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop'
+    tagline: 'The Vibe: Stately yet breathable',
+    summary: 'Key: Soft palettes · Modern finishes',
+    description: 'Neo-classic design is a contemporary interpretation of classical elegance. It maintains the grace and symmetry of traditional decor but strips away the heavy ornamentation in favor of a cleaner, more updated look. It is the bridge between the old world and the new.',
+    keyFeatures: ['High ceilings', 'Soft color palettes (creams, grays, and muted blues)', 'Mix of traditional silhouettes with modern finishes'],
+    vibe: 'Stately yet breathable; formal yet comfortable',
+    image: '/neoclassicaltheme1.jpeg',
+    galleryImages: ['/neoclassicaltheme1.jpeg', '/neoclassicaltheme2.jpeg', '/neoclassicaltheme3.jpeg', '/neoclassicaltheme4.jpeg']
   },
   {
     id: 4,
     title: 'Bohemian (Boho) Interior',
+    subtitle: 'Creative, Spirited, and Uniquely Yours',
     category: 'Bohemian (Boho) Interior',
-    location: 'The Vibe: Cozy, vibrant, expressive',
-    year: 'Key: Layered textures · Global accents',
-    image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop'
+    tagline: 'The Vibe: Cozy, vibrant, expressive',
+    summary: 'Key: Layered textures · Global accents',
+    description: 'Bohemian design is for the rule-breakers and the adventurers. It is a "maximalist" approach that embraces layers of texture, pattern, and color. This theme celebrates individuality and creates a relaxed, lived-in atmosphere that feels deeply personal.',
+    keyFeatures: ['Indoor greenery', 'Eclectic furniture', 'Layered rugs', 'Global-inspired accents (macramé, rattan, and bold prints)'],
+    vibe: 'Cozy, vibrant, and artistically expressive',
+    image: '/bohemiantheme1.jpg',
+    galleryImages: ['/bohemiantheme1.jpg', '/bohemiantheme2.webp', '/bohemiantheme3.jpg', '/bohemiantheme4.avif']
   }
 ];
 
 const Themes = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedTheme, setSelectedTheme] = useState<typeof themesData[0] | null>(null);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -51,11 +72,88 @@ const Themes = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const filteredThemes = activeCategory === 'All' 
-    ? themes 
-    : themes.filter(p => p.category === activeCategory);
+    ? themesData 
+    : themesData.filter(p => p.category === activeCategory);
 
   return (
     <div ref={containerRef} className="min-h-screen bg-dark text-white overflow-hidden">
+      {/* Theme Detail Modal */}
+      <AnimatePresence>
+        {selectedTheme && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setSelectedTheme(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              className="bg-dark-lighter border border-white/10 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedTheme(null)}
+                className="absolute top-4 right-4 z-10 bg-brand text-white p-2 rounded-full hover:bg-brand-dark transition-colors"
+              >
+                <X size={24} />
+              </button>
+
+              <div className="p-8 md:p-12">
+                {/* Header */}
+                <div className="mb-8">
+                  <span className="text-brand text-sm font-bold tracking-[0.2em] uppercase mb-2 block">{selectedTheme.category}</span>
+                  <h2 className="text-4xl md:text-6xl font-serif font-bold mb-4">{selectedTheme.title}</h2>
+                  <p className="text-2xl text-gray-400 italic mb-6">{selectedTheme.subtitle}</p>
+                  <p className="text-lg text-gray-300 leading-relaxed">{selectedTheme.description}</p>
+                </div>
+
+                {/* Gallery Images */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {selectedTheme.galleryImages.map((img, idx) => (
+                    <div key={idx} className="relative overflow-hidden rounded-lg aspect-video group">
+                      <img 
+                        src={img} 
+                        alt={`${selectedTheme.title} ${idx + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Key Features */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-serif font-bold mb-4 text-brand">Key Features</h3>
+                  <ul className="space-y-3">
+                    {selectedTheme.keyFeatures.map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="w-2 h-2 bg-brand rounded-full mr-3 mt-2 shrink-0"></span>
+                        <span className="text-gray-300 text-lg">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* The Vibe */}
+                <div className="bg-dark p-6 rounded-lg border border-brand/30 mb-8">
+                  <h3 className="text-xl font-serif font-bold mb-2 text-brand">The Vibe</h3>
+                  <p className="text-gray-300 text-lg">{selectedTheme.vibe}</p>
+                </div>
+
+                {/* CTA */}
+                <div className="text-center">
+                  <p className="text-gray-400 mb-6 text-lg">Every great design starts with a conversation. Let us help you choose the theme that best fits your lifestyle and aspirations.</p>
+                  <a href="/contact" className="inline-block bg-brand text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-brand-dark transition-colors rounded-md">
+                    Book a Consultation
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Parallax Hero */}
       <div className="relative h-[60vh] overflow-hidden flex items-center justify-center">
         <motion.div 
@@ -87,6 +185,14 @@ const Themes = () => {
           >
             Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-orange-400">Signature Themes</span>
           </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            We believe that a home is more than just a structure; it is a canvas of your personality. Explore our signature themes and find the one that resonates with your vision.
+          </motion.p>
         </div>
       </div>
 
@@ -120,6 +226,7 @@ const Themes = () => {
                 transition={{ duration: 0.5 }}
                 key={theme.id}
                 className="group cursor-pointer"
+                onClick={() => setSelectedTheme(theme)}
               >
                 <div className="relative overflow-hidden mb-6 aspect-video rounded-lg">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500 z-10"></div>
@@ -143,8 +250,8 @@ const Themes = () => {
                     <h3 className="text-2xl font-serif font-bold text-white group-hover:text-brand transition-colors duration-300">{theme.title}</h3>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-500 text-sm mb-1">{theme.location}</p>
-                    <p className="text-gray-500 text-sm">{theme.year}</p>
+                    <p className="text-gray-500 text-sm mb-1">{theme.tagline}</p>
+                    <p className="text-gray-500 text-sm">{theme.summary}</p>
                   </div>
                 </div>
               </motion.div>
@@ -153,9 +260,10 @@ const Themes = () => {
         </motion.div>
         
         <div className="mt-20 text-center">
-          <button className="bg-transparent border border-white/20 text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-colors inline-flex items-center group rounded-md">
-            Explore More Themes <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <p className="text-gray-400 mb-8 text-lg">Ready to transform your space? Every great design starts with a conversation.</p>
+          <a href="/contact" className="inline-block bg-brand text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-brand-dark transition-colors rounded-md">
+            Book a Consultation <ArrowRight className="inline ml-2" />
+          </a>
         </div>
       </div>
     </div>

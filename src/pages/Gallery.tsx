@@ -8,18 +8,21 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ZoomIn } from 'lucide-react';
 
-const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Office', 'Details'];
+const categories = ['All', 'Living Room', 'Dining', 'Bedroom', 'Office', 'Details'];
 
 const galleryImages = [
-  { id: 1, category: 'Living Room', src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop' },
-  { id: 2, category: 'Office', src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop' },
-  { id: 3, category: 'Details', src: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop' },
-  { id: 4, category: 'Bedroom', src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop' },
-  { id: 5, category: 'Office', src: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200&auto=format&fit=crop' },
-  { id: 6, category: 'Details', src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1200&auto=format&fit=crop' },
-  { id: 7, category: 'Kitchen', src: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop' },
-  { id: 8, category: 'Living Room', src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop' },
-  { id: 9, category: 'Bedroom', src: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200&auto=format&fit=crop' },
+  { id: 1, category: 'Living Room', src: '/Gallery1.jpeg' },
+  { id: 2, category: 'Office', src: '/Gallery2.jpeg' },
+  { id: 3, category: 'Details', src: '/Gallery3.jpeg' },
+  { id: 4, category: 'Bedroom', src: '/Gallery4.jpeg' },
+  { id: 5, category: 'Office', src: '/Gallery5.jpeg' },
+  { id: 6, category: 'Details', src: '/Gallery6.jpeg' },
+  { id: 7, category: 'Dining', src: '/Gallery7.jpeg' },
+  { id: 8, category: 'Living Room', src: '/Gallery8.jpeg' },
+  { id: 9, category: 'Bedroom', src: '/Gallery9.jpeg' },
+  { id: 10, category: 'Details', src: '/Gallery10.jpeg' },
+  { id: 11, category: 'Living Room', src: '/Gallery11.jpeg' },
+  { id: 12, category: 'Dining', src: '/Gallery12.jpeg' },
 ];
 
 const Gallery = () => {

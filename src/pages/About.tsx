@@ -1,30 +1,6 @@
-import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion';
-import { Award, Users, Clock, CheckCircle, ArrowRight } from 'lucide-react';
-import { useRef, useEffect } from 'react';
-
-const Counter = ({ value }: { value: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
-  const numericValue = parseInt(value.replace(/\D/g, ''));
-  const suffix = value.replace(/[0-9]/g, '');
-
-  useEffect(() => {
-    if (!inView) return;
-    
-    const node = ref.current;
-    const controls = animate(0, numericValue, {
-      duration: 2.5,
-      ease: "easeOut",
-      onUpdate(val) {
-        if (node) node.textContent = Math.floor(val) + suffix;
-      }
-    });
-
-    return () => controls.stop();
-  }, [numericValue, suffix, inView]);
-
-  return <span ref={ref}>{0 + suffix}</span>;
-};
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -36,31 +12,12 @@ const About = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const stats = [
-    { number: "15+", label: "Years Experience", icon: Clock },
-    { number: "350+", label: "Projects Completed", icon: CheckCircle },
-    { number: "15+", label: "Design Awards", icon: Award },
-    { number: "100%", label: "Client Satisfaction", icon: Users }
-  ];
-
   const team = [
     {
-      name: "Sarah Johnson",
-      role: "Principal Architect",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      bio: "With over 15 years of experience, Sarah leads our design vision with a focus on sustainable luxury."
-    },
-    {
-      name: "Michael Chen",
-      role: "Senior Interior Designer",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      bio: "Michael brings a unique perspective to spatial planning and material selection, creating harmonious environments."
-    },
-    {
-      name: "Elena Rodriguez",
-      role: "Project Manager",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      bio: "Elena ensures every project is delivered on time and within budget, maintaining our high standards of quality."
+      name: "Om Dattatraya",
+      role: "Founder & Interior Designer",
+      image: "/owner.jpeg",
+      bio: "BSC In VfX, 3D and Media Graphics (Tron Animation, Pune) Plus Specialization In Interior Design (National institute of interior design, Pune). A unique intersection of cinematic artistry and structural precision."
     }
   ];
 
@@ -166,31 +123,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-dark-lighter border-y border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-6 group-hover:bg-brand/20 transition-colors duration-300">
-                  <stat.icon className="text-brand w-8 h-8" />
-                </div>
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  <Counter value={stat.number} />
-                </h3>
-                <p className="text-gray-400 uppercase tracking-wider text-sm">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Stats Section Removed */}
 
       {/* Team Section */}
       <section className="py-24">
@@ -200,7 +133,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Meet Our Team</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="flex justify-center gap-10 flex-wrap">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -208,7 +141,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group relative"
+                className="group relative w-full md:w-1/3 max-w-sm"
               >
                 <div className="overflow-hidden mb-6 relative aspect-[3/4]">
                   <div className="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
@@ -217,13 +150,6 @@ const About = () => {
                     alt={member.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                   />
-                  
-                  {/* Social Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 bg-black/40 backdrop-blur-sm">
-                    <button className="bg-white text-dark px-6 py-3 font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors rounded-md">
-                      View Profile
-                    </button>
-                  </div>
                 </div>
                 
                 <div className="text-center">

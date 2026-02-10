@@ -32,7 +32,7 @@ const Home = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <h2 className="text-brand text-lg md:text-xl tracking-[0.5em] uppercase mb-6 font-medium">Welcome to Styliq</h2>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-8 text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 text-white leading-tight">
               Elevate Your Living Experience.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
@@ -148,7 +148,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { icon: <Award size={50} />, title: "Award Winning Design", desc: "Recognized globally for excellence in residential and commercial spaces." },
+              { icon: <Award size={50} />, title: "Functional & Aesthetic Balance", desc: "We ensure every design is not only visually stunning but also practical for daily living." },
               { icon: <Clock size={50} />, title: "On-Time Delivery", desc: "We respect your time and ensure projects are completed on schedule, every time." },
               { icon: <CheckCircle size={50} />, title: "Quality Assurance", desc: "Premium materials and top-tier craftsmanship guaranteed for lasting beauty." }
             ].map((item, idx) => (

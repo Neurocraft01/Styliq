@@ -9,7 +9,7 @@ const FloatingButtons = () => {
     { text: "I'm here to help you start your design journey. Would you like to schedule a consultation?", sender: 'bot' }
   ]);
   const [inputValue, setInputValue] = useState("");
-  const whatsappNumber = "1234567890"; // Replace with actual number
+  const whatsappNumber = "917447415182"; // Updated to provided number
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
@@ -103,7 +103,7 @@ const FloatingButtons = () => {
 
         {/* Phone Button */}
         <motion.a
-          href="tel:+1234567890"
+          href="tel:+917447415182"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="bg-white text-dark p-4 shadow-lg hover:shadow-white/20 transition-shadow flex items-center justify-center group rounded-full"
