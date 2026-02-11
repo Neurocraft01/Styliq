@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
-import { useRef, useState, FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
