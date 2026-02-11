@@ -1,8 +1,53 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState, FormEvent } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -135,20 +180,41 @@ const Contact = () => {
             <div className="absolute top-0 right-0 w-20 h-20 bg-brand/10 rounded-bl-full -mr-10 -mt-10"></div>
             
             <h3 className="text-3xl font-serif font-bold mb-8">Send a Message</h3>
-            <form className="space-y-6">
+            
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-md">
+                <p className="text-green-400 text-center">Thank you! Your message has been sent successfully.</p>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-md">
+                <p className="text-red-400 text-center">Oops! Something went wrong. Please try again.</p>
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="group">
-                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Name</label>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Name*</label>
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-dark border-b-2 border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors placeholder-transparent"
                     placeholder="Your Name"
                   />
                 </div>
                 <div className="group">
-                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Email</label>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Email*</label>
                   <input 
-                    type="email" 
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-dark border-b-2 border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors placeholder-transparent"
                     placeholder="Your Email"
                   />
@@ -159,7 +225,10 @@ const Contact = () => {
                 <div className="group">
                   <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Phone</label>
                   <input 
-                    type="tel" 
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="w-full bg-dark border-b-2 border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors placeholder-transparent"
                     placeholder="Your Phone"
                   />
@@ -167,7 +236,10 @@ const Contact = () => {
                 <div className="group">
                   <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Subject</label>
                   <input 
-                    type="text" 
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full bg-dark border-b-2 border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors placeholder-transparent"
                     placeholder="Subject"
                   />
@@ -175,16 +247,25 @@ const Contact = () => {
               </div>
 
               <div className="group">
-                <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Message</label>
+                <label className="block text-sm font-bold uppercase tracking-wider text-gray-400 mb-2 group-focus-within:text-brand transition-colors">Message*</label>
                 <textarea 
                   rows={6}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-dark border-b-2 border-white/10 px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors placeholder-transparent resize-none"
                   placeholder="Your Message"
                 ></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-brand text-white font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-colors flex items-center justify-center group rounded-md">
-                Send Message <Send className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-brand text-white font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-colors flex items-center justify-center group rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'} 
+                {!isSubmitting && <Send className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />}
               </button>
             </form>
           </motion.div>
