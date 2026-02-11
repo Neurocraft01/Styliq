@@ -81,7 +81,7 @@ const Themes = () => {
     : themesData.filter(p => p.category === activeCategory);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-dark text-white overflow-hidden">
+    <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
       {/* Theme Detail Modal */}
       <AnimatePresence>
         {selectedTheme && (

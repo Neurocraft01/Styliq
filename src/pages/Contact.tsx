@@ -59,7 +59,7 @@ const Contact = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-dark text-white overflow-hidden">
+    <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
       {/* Parallax Hero */}
       <div className="relative h-[50vh] overflow-hidden flex items-center justify-center">
         <motion.div 

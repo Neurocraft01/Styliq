@@ -13,7 +13,7 @@ const Home = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* Hero Section */}
       <section ref={ref} className="relative h-[110vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
