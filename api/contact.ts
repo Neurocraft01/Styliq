@@ -19,7 +19,7 @@ export default async function handler(req: any, res: any) {
     // Send notification email to admin
     const adminEmail = await resend.emails.send({
       from: 'Styliq Interiors Contact Form <onboarding@resend.dev>', // Replace with your verified domain
-      to: ['Styliqinteriors@gmail.com'], // Your email
+      to: ['Styliqinteriors@gmail.com', 'istyliq@gmail.com'], // Your email addresses
       replyTo: email,
       subject: `New Contact Form Submission: ${subject || 'No Subject'}`,
       html: `
