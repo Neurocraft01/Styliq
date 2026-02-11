@@ -188,6 +188,17 @@ const Home = () => {
               </div>
             ))}
           </div>
+          
+          <div className="text-center mt-16">
+            <a 
+              href="https://g.page/r/CY4eWyBSqnROEBI/review" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block bg-dark hover:bg-white text-white hover:text-dark font-bold py-4 px-10 rounded-md transition-all duration-300 border-2 border-white hover:border-dark text-lg uppercase tracking-wider"
+            >
+              Add Your Review
+            </a>
+          </div>
         </div>
       </section>
 
