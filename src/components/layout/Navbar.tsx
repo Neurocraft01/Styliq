@@ -28,7 +28,10 @@ const Navbar = () => {
             <img src="/logo.PNG" alt="Styliq Interiors" className="h-20 w-20 object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
           <div className="flex flex-col">
-            <span className="text-3xl font-serif font-bold text-white tracking-widest leading-none group-hover:text-brand transition-colors duration-300">STYLIQ</span>
+            <span className="text-3xl font-serif font-bold tracking-widest leading-none">
+              <span className="text-white">STYL</span>
+              <span className="text-brand">IQ</span>
+            </span>
             <span className="text-brand text-xs tracking-[0.3em] leading-none font-medium mt-1">INTERIORS</span>
           </div>
         </Link>
