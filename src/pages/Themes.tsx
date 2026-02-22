@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, X } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import SEO from '../components/seo/SEO';
+import { buildBreadcrumb } from '../components/seo/schemas';
 
 const categories = ['All', 'Modern Interior', 'Classic Interior', 'Neo-Classic Interior', 'Bohemian (Boho) Interior'];
 
@@ -60,7 +63,11 @@ const themesData = [
 ];
 
 const Themes = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchParams] = useSearchParams();
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const cat = searchParams.get('category');
+    return cat && categories.includes(cat) ? cat : 'All';
+  });
   const [selectedTheme, setSelectedTheme] = useState<typeof themesData[0] | null>(null);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -74,7 +81,11 @@ const Themes = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    const cat = searchParams.get('category');
+    if (cat && categories.includes(cat)) {
+      setActiveCategory(cat);
+    }
+  }, [searchParams]);
 
   const filteredThemes = activeCategory === 'All' 
     ? themesData 
@@ -82,6 +93,17 @@ const Themes = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
+      <SEO
+        title={activeCategory === 'All'
+          ? 'Interior Design Themes Pune | Modern, Classic, Bohemian | STYLIQ INTERIORS'
+          : `${activeCategory} Design Pune | STYLIQ INTERIORS`}
+        description={activeCategory === 'All'
+          ? "Explore STYLIQ INTERIORS' curated interior design themes — Modern, Classic, Neo-Classic & Bohemian (BOHO). Pune's first theme-based interior studio. Book a free design consultation."
+          : `Explore ${activeCategory} interior designs in Pune by STYLIQ INTERIORS. Premium theme-based interiors with meticulous attention to detail. Book a free consultation.`}
+        canonical="/themes"
+        keywords="interior design themes Pune, modern interior design Pune, classic interior design Pune, neo-classic interior Pune, bohemian interior design Pune, BOHO interior Pune"
+        schema={buildBreadcrumb([{ name: 'Home', url: '/' }, { name: 'Themes', url: '/themes' }])}
+      />
       {/* Theme Detail Modal */}
       <AnimatePresence>
         {selectedTheme && (
@@ -173,7 +195,7 @@ const Themes = () => {
           />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

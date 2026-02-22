@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
+import SEO from '../components/seo/SEO';
+import { organizationSchema, buildBreadcrumb, buildWebPage } from '../components/seo/schemas';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -23,6 +25,13 @@ const About = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
+      <SEO
+        title="About Us | Interior Design Studio Pune | STYLIQ INTERIORS"
+        description="Learn about STYLIQ INTERIORS — Pune's first theme-based interior design studio with 15+ years of excellence. Our team crafts personalised Modern, Classic, Neo-Classic & Bohemian interiors."
+        canonical="/about"
+        keywords="about STYLIQ Interiors, interior design studio Pune, best interior designers Pune, interior design company Pimpri Chinchwad"
+        schema={[organizationSchema, buildBreadcrumb([{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }]), buildWebPage('About STYLIQ INTERIORS', 'Interior design studio in Pune', '/about')]}
+      />
       {/* Parallax Hero */}
       <div className="relative h-[70vh] overflow-hidden flex items-center justify-center">
         <motion.div 
@@ -37,7 +46,7 @@ const About = () => {
           />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

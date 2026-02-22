@@ -5,32 +5,68 @@ import { motion, AnimatePresence } from 'framer-motion';
 const FloatingButtons = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hello! Welcome to Styliq Interiors.", sender: 'bot' },
-    { text: "I'm here to help you start your design journey. Would you like to schedule a consultation?", sender: 'bot' }
+    { text: "Hello! Welcome to Styliq Interiors. 👋", sender: 'bot' },
+    { text: "I can help you with our themes, services, pricing, location, and booking. What would you like to know?", sender: 'bot' }
   ]);
   const [inputValue, setInputValue] = useState("");
-  const whatsappNumber = "917447415182"; // Updated to provided number
+  const whatsappNumber = "917447415182";
+
+  const getBotResponse = (msg: string): string => {
+    const m = msg.toLowerCase();
+
+    if (m.includes('theme') || m.includes('style') || (m.includes('design') && !m.includes('residential'))) {
+      return "We offer 4 signature themes:\n\n1. Modern Interior – Clean lines, neutrals & open plans\n2. Classic Interior – Symmetry, rich details & dark woods\n3. Neo-Classic Interior – Heritage meets modernity\n4. Bohemian (BOHO) Interior – Layered textures & global accents\n\nVisit our Themes page to explore each one!";
+    }
+    if (m.includes('modern') && !m.includes('neo')) {
+      return "Modern Interior – Rooted in 'less is more'. Clean lines, geometric shapes, neutral palettes, and natural materials like wood, glass & metal. Perfect for a sleek, airy, clutter-free living space.";
+    }
+    if ((m.includes('classic') || m.includes('classical')) && !m.includes('neo')) {
+      return "Classic Interior – Inspired by 18th/19th-century European styles. Symmetry, intricate moldings, dark woods, rich fabrics (velvet/silk), and a central focal point like a chandelier or fireplace.";
+    }
+    if (m.includes('neo') || m.includes('neoclassic') || m.includes('neo-classic')) {
+      return "Neo-Classic Interior – A contemporary interpretation of classical elegance. High ceilings, soft palettes (creams, grays, muted blues), and a mix of traditional silhouettes with modern finishes.";
+    }
+    if (m.includes('boho') || m.includes('bohemian')) {
+      return "Bohemian (BOHO) Interior – For creative souls! Layered textures, patterns & colors. Indoor greenery, eclectic furniture, layered rugs, macramé, rattan, and bold prints. Truly uniquely yours.";
+    }
+    if (m.includes('service') || m.includes('what do you') || m.includes('offer')) {
+      return "STYLIQ Interiors offers:\n• Residential Design – Tailored homes that tell your story\n• Commercial Spaces – Inspiring workplaces for modern businesses\n• Architectural Planning – Structural precision meets aesthetic beauty\n\nWe are the region's first theme-based interior studio!";
+    }
+    if (m.includes('price') || m.includes('cost') || m.includes('rate') || m.includes('budget') || m.includes('charge')) {
+      return "Our pricing varies based on the project scope, theme, and space size. We'd love to give you a detailed quote after understanding your needs. Book a free consultation or call us at 7447415182.";
+    }
+    if (m.includes('consul') || m.includes('book') || m.includes('appointment') || m.includes('meeting')) {
+      return "Book a free consultation:\n📞 Call: 7447415182 or 8805500590\n📧 Email: istyliq@gmail.com\n💬 WhatsApp: tap the green button below\n🌐 Or use the Contact page form!";
+    }
+    if (m.includes('contact') || m.includes('phone') || m.includes('number') || m.includes('call') || m.includes('email') || m.includes('mail')) {
+      return "📞 Phone: 7447415182 / 8805500590\n📧 Email: istyliq@gmail.com\n🕐 Hours: Mon–Fri 9AM–6PM, Sat 10AM–2PM\n\nYou can also reach us via WhatsApp using the green button below!";
+    }
+    if (m.includes('address') || m.includes('location') || m.includes('where') || m.includes('office') || m.includes('studio') || m.includes('visit') || m.includes('map') || m.includes('direction')) {
+      return "📍 Near Laxmi Sweets, Yashwantrao Chavan Road,\nPimpri Colony, Pune – 411018\n\n🗺️ https://maps.app.goo.gl/9QwaAzt7pmssKCeN7\n\n🕐 Mon–Fri 9AM–6PM, Sat 10AM–2PM";
+    }
+    if (m.includes('hour') || m.includes('timing') || m.includes('open') || m.includes('time') || m.includes('schedule')) {
+      return "🕐 Working Hours:\nMon – Fri: 9:00 AM – 6:00 PM\nSaturday: 10:00 AM – 2:00 PM\nSunday: Closed\n\nCall 7447415182 to confirm availability.";
+    }
+    if (m.includes('about') || m.includes('who are') || m.includes('company') || m.includes('styliq') || m.includes('experience') || m.includes('year')) {
+      return "STYLIQ Interiors is the region's first theme-based interior design studio with 15+ years of excellence. We blend aesthetic innovation with functional excellence — every fabric, finish, and fixture speaks the same visual language.";
+    }
+    if (m.includes('hello') || m.includes('hi') || m.includes('hey') || m.includes('good morning') || m.includes('good afternoon')) {
+      return "Hello! 😊 How can I help you today? Ask me about:\n• Interior design themes\n• Services & pricing\n• Booking a consultation\n• Our Pune studio location";
+    }
+    if (m.includes('thank')) {
+      return "You're welcome! 😊 Feel free to ask anything else. We'd love to help you create your dream space!";
+    }
+    return "Thank you for your message! For detailed assistance:\n📞 7447415182 / 8805500590\n📧 istyliq@gmail.com\n\nOr visit our Contact page to send us a message directly.";
+  };
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
-
-    // Add user message
     setMessages(prev => [...prev, { text: inputValue, sender: 'user' }]);
     const userMessage = inputValue;
     setInputValue("");
-
-    // Simulate bot response
     setTimeout(() => {
-      let botResponse = "Thank you for your message. Our team will get back to you shortly.";
-      
-      if (userMessage.toLowerCase().includes('consultation') || userMessage.toLowerCase().includes('book')) {
-        botResponse = "Great! You can book a consultation through our Contact page or call us directly.";
-      } else if (userMessage.toLowerCase().includes('price') || userMessage.toLowerCase().includes('cost')) {
-        botResponse = "Our pricing varies based on the project scope. Let's discuss your requirements in detail.";
-      }
-
-      setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
-    }, 1000);
+      setMessages(prev => [...prev, { text: getBotResponse(userMessage), sender: 'bot' }]);
+    }, 600);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -63,7 +99,7 @@ const FloatingButtons = () => {
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`${msg.sender === 'user' ? 'bg-brand text-white' : 'bg-white/5 border border-white/10 text-gray-300'} p-3 rounded-lg max-w-[85%] text-sm leading-relaxed`}>
-                    <p>{msg.text}</p>
+                    <p className="whitespace-pre-line">{msg.text}</p>
                   </div>
                 </div>
               ))}

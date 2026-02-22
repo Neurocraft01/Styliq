@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Instagram } from 'lucide-react';
 import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+import SEO from '../components/seo/SEO';
+import { localBusinessSchema, buildBreadcrumb } from '../components/seo/schemas';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -60,6 +62,13 @@ const Contact = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
+      <SEO
+        title="Contact STYLIQ INTERIORS | Book Interior Design Consultation Pune"
+        description="Get in touch with STYLIQ INTERIORS in Pune. Book a free interior design consultation, call +91 7447415182, or visit us at Pimpri Colony, Pune. We reply within 24 hours."
+        canonical="/contact"
+        keywords="contact interior designer Pune, book interior design consultation Pune, STYLIQ INTERIORS contact, interior design studio Pimpri Pune"
+        schema={[localBusinessSchema, buildBreadcrumb([{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }])]}
+      />
       {/* Parallax Hero */}
       <div className="relative h-[50vh] overflow-hidden flex items-center justify-center">
         <motion.div 
@@ -74,7 +83,7 @@ const Contact = () => {
           />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +137,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg mb-1">Email</h4>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">Styliqinteriors@gmail.com</p>
+                    <a href="mailto:istyliq@gmail.com" className="text-gray-400 group-hover:text-brand transition-colors">istyliq@gmail.com</a>
                   </div>
                 </div>
 
@@ -138,8 +147,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg mb-1">Visit Us</h4>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">Near Laxmi Sweets, Yashwantrao Chavan Road</p>
-                    <p className="text-gray-400 group-hover:text-brand transition-colors">Pimpri Colony, Pune - 411018</p>
+                    <a href="https://maps.app.goo.gl/9QwaAzt7pmssKCeN7" target="_blank" rel="noopener noreferrer" className="text-gray-400 group-hover:text-brand transition-colors block">
+                      Near Laxmi Sweets, Yashwantrao Chavan Road<br />
+                      Pimpri Colony, Pune - 411018
+                    </a>
+                    <a href="https://maps.app.goo.gl/9QwaAzt7pmssKCeN7" target="_blank" rel="noopener noreferrer" className="text-brand text-sm mt-1 inline-flex items-center hover:underline">
+                      View on Google Maps →
+                    </a>
                   </div>
                 </div>
 
@@ -159,13 +173,13 @@ const Contact = () => {
             {/* Map Integration */}
             <div className="h-80 w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-lg overflow-hidden border border-white/10">
                <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.8488053748983!2d73.7972!3d18.6263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b86375555555%3A0x1234567890abcdef!2sPimpri%20Colony%2C%20Pune!5e0!3m2!1sen!2sin!4v1623345678901!5m2!1sen!2sin" 
+                 src="https://maps.google.com/maps?q=Near+Laxmi+Sweets+Yashwantrao+Chavan+Road+Pimpri+Colony+Pune+411018&output=embed" 
                  width="100%" 
                  height="100%" 
                  style={{ border: 0 }} 
                  allowFullScreen 
                  loading="lazy"
-                 title="Google Map"
+                 title="Styliq Interiors - Google Map"
                ></iframe>
             </div>
           </motion.div>
@@ -269,6 +283,54 @@ const Contact = () => {
                 {!isSubmitting && <Send className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />}
               </button>
             </form>
+
+            {/* Instagram Feed — fills the blank space below the form */}
+            <div className="mt-10 pt-8 border-t border-white/10">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[2px] rounded-full">
+                    <div className="bg-dark-lighter rounded-full p-1.5">
+                      <Instagram size={18} className="text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">Follow Our Work</p>
+                    <a href="https://instagram.com/styliqinteriors/" target="_blank" rel="noopener noreferrer" className="text-brand text-xs hover:underline">@styliqinteriors</a>
+                  </div>
+                </div>
+                <a
+                  href="https://instagram.com/styliqinteriors/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-brand transition-colors"
+                >
+                  View All →
+                </a>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  '/Gallery1.jpeg',
+                  '/moderntheme1.jpeg',
+                  '/classicaltheme1.jpeg',
+                  '/Gallery5.jpeg',
+                  '/neoclassicaltheme1.jpeg',
+                  '/bohemiantheme1.jpg',
+                ].map((src, idx) => (
+                  <a
+                    key={idx}
+                    href="https://instagram.com/styliqinteriors/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative aspect-square overflow-hidden rounded-md block"
+                  >
+                    <img src={src} alt="Styliq on Instagram" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <Instagram size={18} className="text-white" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

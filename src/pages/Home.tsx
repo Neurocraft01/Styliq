@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Star, CheckCircle, Clock, Award, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
+import SEO from '../components/seo/SEO';
+import { localBusinessSchema, faqSchema, buildBreadcrumb } from '../components/seo/schemas';
 
 const Home = () => {
   const ref = useRef(null);
@@ -14,8 +16,15 @@ const Home = () => {
 
   return (
     <div className="relative w-full overflow-hidden">
+      <SEO
+        title="Best Interior Designer in Pune | STYLIQ INTERIORS"
+        description="STYLIQ Interiors is Pune's #1 theme-based interior design studio. Expert residential & commercial interior design — Modern, Classic, Neo-Classic & Bohemian themes. Book a free consultation!"
+        canonical="/"
+        keywords="interior designer Pune, residential interior design Pune, commercial interior design Pune, modern interior Pune, luxury interior design Pune, best interior designer Pimpri, home interior design Pune"
+        schema={[localBusinessSchema, faqSchema, buildBreadcrumb([{ name: 'Home', url: '/' }])]}
+      />
       {/* Hero Section */}
-      <section ref={ref} className="relative h-[110vh] flex items-center justify-center overflow-hidden">
+      <section ref={ref} className="relative h-[calc(100vh-7rem)] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" 
@@ -110,23 +119,24 @@ const Home = () => {
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Residential Design", desc: "Tailored homes that tell your story.", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop" },
-              { title: "Commercial Spaces", desc: "Inspiring workplaces for modern businesses.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" },
-              { title: "Architectural Planning", desc: "Structural precision meets aesthetic beauty.", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" }
+              { title: "Modern Interior", desc: "Clean lines, neutrals & open plans — sophisticated and functional.", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop", category: "Modern Interior" },
+              { title: "Classic Interior", desc: "Symmetry, rich details & dark woods — timeless elegance.", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop", category: "Classic Interior" },
+              { title: "Neo-Classic Interior", desc: "Heritage meets modernity — stately yet breathable.", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600&auto=format&fit=crop", category: "Neo-Classic Interior" },
+              { title: "Bohemian (BOHO) Interior", desc: "Layered textures, global accents & vibrant creativity.", img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop", category: "Bohemian (Boho) Interior" }
             ].map((item, idx) => (
-              <div key={idx} className="group relative h-[350px] overflow-hidden rounded-lg cursor-pointer">
+              <Link key={idx} to={`/themes?category=${encodeURIComponent(item.category)}`} className="group relative h-[350px] overflow-hidden rounded-lg cursor-pointer block">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                 <div className="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-3xl font-serif font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-300 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.desc}</p>
+                  <h3 className="text-2xl font-serif font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-gray-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 text-sm">{item.desc}</p>
                   <span className="text-brand font-bold uppercase tracking-wider text-sm flex items-center">
-                    Learn More <ArrowRight className="ml-2" size={16} />
+                    Explore Theme <ArrowRight className="ml-2" size={16} />
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           
@@ -177,14 +187,7 @@ const Home = () => {
                 <div className="absolute -top-6 left-10 bg-brand-light text-dark p-3 rounded-full">
                   <Star fill="currentColor" size={24} />
                 </div>
-                <p className="text-gray-300 mb-8 italic text-lg leading-relaxed">"{t.text}"</p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gray-700 rounded-full mr-4"></div>
-                  <div>
-                    <h4 className="font-bold text-white text-lg">{t.name}</h4>
-                    <p className="text-brand text-sm">{t.role}</p>
-                  </div>
-                </div>
+                <p className="text-gray-300 italic text-lg leading-relaxed">"{t.text}"</p>
               </div>
             ))}
           </div>

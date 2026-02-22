@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Home, Building2, ArrowRight, Palette, Ruler } from 'lucide-react';
 import { useRef } from 'react';
+import SEO from '../components/seo/SEO';
+import { servicesSchema, buildBreadcrumb } from '../components/seo/schemas';
 
 const Services = () => {
   const containerRef = useRef(null);
@@ -49,6 +51,13 @@ const Services = () => {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-dark text-white overflow-hidden">
+      <SEO
+        title="Interior Design Services Pune | Residential & Commercial | STYLIQ INTERIORS"
+        description="Full residential & commercial interior design services in Pune — Architectural Planning, 3D Renders, Design Consultancy, Full Home Interiors & Commercial Spaces. Free consultation available."
+        canonical="/services"
+        keywords="interior design services Pune, residential interior design Pune, commercial interior Pune, architectural planning Pune, 3D interior renders Pune, design consultancy Pune, full home interiors Pune"
+        schema={[...servicesSchema, buildBreadcrumb([{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }])]}
+      />
       {/* Parallax Hero */}
       <div className="relative h-[60vh] overflow-hidden flex items-center justify-center">
         <motion.div 
@@ -63,7 +72,7 @@ const Services = () => {
           />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -137,7 +146,7 @@ const Services = () => {
             {/* Connecting Line (Desktop) */}
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand/50 to-transparent -translate-y-1/2 z-0"></div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
               {process.map((item, idx) => (
                 <motion.div 
                   key={idx}

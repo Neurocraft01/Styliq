@@ -7,15 +7,17 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ZoomIn } from 'lucide-react';
+import SEO from '../components/seo/SEO';
+import { buildBreadcrumb } from '../components/seo/schemas';
 
 const categories = ['All', 'Living Room', 'Dining', 'Bedroom', 'Office', 'Details'];
 
 const galleryImages = [
-  { id: 1, category: 'Living Room', src: '/Gallery1.jpeg' },
-  { id: 2, category: 'Office', src: '/Gallery2.jpeg' },
-  { id: 3, category: 'Details', src: '/Gallery3.jpeg' },
-  { id: 4, category: 'Bedroom', src: '/Gallery4.jpeg' },
-  { id: 5, category: 'Office', src: '/Gallery5.jpeg' },
+  { id: 1, category: 'Bedroom', src: '/Gallery1.jpeg' },
+  { id: 2, category: 'Living Room', src: '/Gallery2.jpeg' },
+  { id: 3, category: 'Living Room', src: '/Gallery3.jpeg' },
+  { id: 4, category: 'Office', src: '/Gallery4.jpeg' },
+  { id: 5, category: 'Dining', src: '/Gallery5.jpeg' },
   { id: 6, category: 'Details', src: '/Gallery6.jpeg' },
   { id: 7, category: 'Dining', src: '/Gallery7.jpeg' },
   { id: 8, category: 'Living Room', src: '/Gallery8.jpeg' },
@@ -42,6 +44,13 @@ const Gallery = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-dark text-white overflow-hidden">
+      <SEO
+        title="Interior Design Gallery Pune | Project Portfolio | STYLIQ INTERIORS"
+        description="Explore STYLIQ INTERIORS' project gallery — stunning residential and commercial interior design projects in Pune showcasing Modern, Classic, Neo-Classic & Bohemian themes."
+        canonical="/gallery"
+        keywords="interior design gallery Pune, interior design portfolio Pune, best interior projects Pune, home interior photos Pune, luxury interior design portfolio"
+        schema={buildBreadcrumb([{ name: 'Home', url: '/' }, { name: 'Gallery', url: '/gallery' }])}
+      />
       {/* Parallax Hero */}
       <div className="relative h-[50vh] overflow-hidden flex items-center justify-center">
         <motion.div 
@@ -56,7 +65,7 @@ const Gallery = () => {
           />
         </motion.div>
 
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

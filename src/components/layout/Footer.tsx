@@ -60,7 +60,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-4 text-gray-400 group">
                 <Mail className="text-brand shrink-0 group-hover:text-white transition-colors" size={20} />
-                <span className="group-hover:text-white transition-colors">Styliqinteriors@gmail.com</span>
+                <span className="group-hover:text-white transition-colors"> istyliq@gmail.com</span>
               </li>
               <li className="flex items-start space-x-4 text-gray-400 group">
                 <Clock className="text-brand shrink-0 mt-1 group-hover:text-white transition-colors" size={20} />
