@@ -1,7 +1,12 @@
+import emailjs from '@emailjs/browser';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, Instagram } from 'lucide-react';
 import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+
+const EMAILJS_SERVICE_ID  = 'service_dqye21v';
+const EMAILJS_TEMPLATE_ID = 'template_lgrwtkp';
+const EMAILJS_PUBLIC_KEY  = 'QX62B5T0Ne5ECPV1h';
 import SEO from '../components/seo/SEO';
 import { localBusinessSchema, buildBreadcrumb } from '../components/seo/schemas';
 
@@ -22,23 +27,25 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:    formData.name,
+          from_email:   formData.email,
+          phone:        formData.phone,
+          subject:      formData.subject,
+          message:      formData.message,
+          to_name:      'STYLIQ INTERIORS',
+          reply_to:     formData.email,
         },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        setSubmitStatus('error');
-      }
+        EMAILJS_PUBLIC_KEY
+      );
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('EmailJS error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
