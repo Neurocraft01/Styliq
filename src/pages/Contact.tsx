@@ -4,9 +4,9 @@ import { Phone, Mail, MapPin, Clock, Send, Instagram } from 'lucide-react';
 import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
-const EMAILJS_SERVICE_ID  = 'service_dqye21v';
-const EMAILJS_TEMPLATE_ID = 'template_lgrwtkp';
-const EMAILJS_PUBLIC_KEY  = 'QX62B5T0Ne5ECPV1h';
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 import SEO from '../components/seo/SEO';
 import { localBusinessSchema, buildBreadcrumb } from '../components/seo/schemas';
 
